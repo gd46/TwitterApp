@@ -1,0 +1,27 @@
+Twitter API Program
+
+Clean it up
+Namespace
+Autoloading
+Use our HTML Class
+Create Custom Classes for OAuth, and Curl
+
+Classes:
+	OAuth
+	Curl
+
+Take the first tutorial and make it so it can be used for any api. 
+Take the OAuth, and Curl and put them into general classes
+
+Any class should have an interface
+Implement a try, catch for curl class
+HTTP Response Code:
+	200 - no problems
+	500 - server failure
+	404 - no found
+	403 - access denied, unauthorized
+
+Abstract Rest API Class with curl
+
+Another class with OAuth
+Method with authorization - gets an api key or OAuth key
