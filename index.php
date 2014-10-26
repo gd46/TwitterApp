@@ -5,16 +5,18 @@
 
 	//Set the oAuth and API Keys
 	$settings = Classes\Twitter\config\settings::twitterAccess();
+	$twitter = new Classes\Twitter\TwitterAPIExchange($settings);
 
 	echo '<h2>Twitter APP</h2>';
 
+	//Replace this section with a function to allow for any POST or GET operations
 	// Gets user timeline
 	$url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 	$requestMethod = "GET";
 	$getfield = '?screen_name=gdibella21&count=20';
 
-	$twitter = new Classes\Twitter\TwitterAPIExchange($settings);
 
+	//Returns a JSON response from Twitter
 	$string = json_decode($twitter->setGetfield($getfield)->buildOauth($url, $requestMethod)->performRequest(), $assoc = TRUE);
 
 	/* if($string["errors"][0]["message"] != ""){
