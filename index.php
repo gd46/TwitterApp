@@ -1,3 +1,8 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="CSS/style.css">
+	</head>
+</html>
 <?php
 
 	require_once('Autoloader.php');
@@ -8,7 +13,8 @@
 	$twitter = new Classes\Twitter\TwitterAPIExchange($settings);
 
 	echo '<h2>Twitter APP</h2>';
-	
+
+	//newOperation is the twitter call for pulling recents tweets from timeline.
 	$newOperation = new Classes\Twitter\setAPI();
 	$newOperation->setRequest('https://api.twitter.com/1.1/statuses/user_timeline.json','GET','?screen_name=gdibella21&count=20');
 	//Returns a JSON response from Twitter
@@ -20,15 +26,5 @@
 		.$string[errors][0]["message"]."</em></p>"; exit();
 	}*/
 
-	//Prints out the user timeline
-	foreach($string as $items)
-    {
-        echo "Time and Date of Tweet: ".$items['created_at']."<br />";
-        echo "Tweet: ". $items['text']."<br />";
-        echo "Tweeted by: ". $items['user']['name']."<br />";
-        echo "Screen name: ". $items['user']['screen_name']."<br />";
-        echo "Followers: ". $items['user']['followers_count']."<br />";
-        echo "Friends: ". $items['user']['friends_count']."<br />";
-        echo "Listed: ". $items['user']['listed_count']."<br /><hr />";
-    }
+	Classes\Html\htmlFunctions::printTable($string, 'horizontal');
 ?>

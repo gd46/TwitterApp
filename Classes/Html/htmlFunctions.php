@@ -1,64 +1,56 @@
 <?php
-	
+
+
 	namespace Classes\Html;
 
-	class htmlFunctions implements \Interfaces\htmlFunctions{
+	class htmlFunctions{
+
+		public static $user_timeline_headings = ['Time and Date of Tweet','Tweet','Tweeted by','Screen name','Followers','Friends','Listed'];
 		
-		//Function for printing a table by passing in an array, and passing in one url variable. 
-		public static function printVerticaltable($records,$headings){
-			if(isset($_GET['record'])){
-				$table = '<div id="verticalTable"><table border="1">';
-				$i = 0;
-				foreach($records[$_GET['record']] as $key => $value){
-					$table .= '<tr><th>' . $headings[$i]['varTitle'] . '</th>';
-					$table .= '<td>' . $value . '</td></tr>';
-					$i++;
+		public static function printVerticaltable($string){
+			$table = '<div id="verticalTable"><table border="1">';
+				foreach($string as $items){
+					$table .= '<tr><th>' . self::$user_timeline_headings[0] . '</th><td>' . $items['created_at'] . '</td></tr>';
+					$table .= '<tr><th>' . self::$user_timeline_headings[1] . '</th><td>' . $items['text'] . '</td></tr>';
+					$table .= '<tr><th>' . self::$user_timeline_headings[2] . '</th><td>' . $items['user']['name'] . '</td></tr>';
+					$table .= '<tr><th>' . self::$user_timeline_headings[3] . '</th><td>' . $items['user']['screen_name'] . '</td></tr>';
+					$table .= '<tr><th>' . self::$user_timeline_headings[4] . '</th><td>' . $items['user']['followers_count'] . '</td></tr>';
+					$table .= '<tr><th>' . self::$user_timeline_headings[5] . '</th><td>' . $items['user']['friends_count'] . '</td></tr>';
+					$table .= '<tr><th>' . self::$user_timeline_headings[6] . '</th><td>' . $items['user']['listed_count'] . '</td></tr>';
 				}
 				$table .= '</table></div>';
-				echo $table;
-			}
+				echo $table; 
 		}
 
-		public static function printHorizontaltable($records, $headings){
-			if(isset($_GET['record'])){
-				$table = '<table border="1"><tr>';
+		public static function printHorizontaltable($string){
+			$table = '<div id="horizontalTable"><table border="1"><tr>';
 				$i = 0;
-				foreach($records[$_GET['record']] as $record){
-					$table .= '<th>' . $headings[$i]['varTitle'] . '</th>';
+				foreach(self::$user_timeline_headings as $heading){
+					$table .= '<th>' . self::$user_timeline_headings[$i] . '</th>';
 					$i++;
 				}
 				$table .= '</tr><tr>';
-				foreach($records[$_GET['record']] as $key => $value){
-					$table .= '<td>' . $value . '</td>';
+				foreach($string as $items){
+					$table .= '<td>' . $items['created_at'] . '</td>';
+					$table .= '<td>' . $items['text'] . '</td>';
+					$table .= '<td>' . $items['user']['name'] . '</td>';
+					$table .= '<td>' . $items['user']['screen_name'] . '</td>';
+					$table .= '<td>' . $items['user']['followers_count'] . '</td>';
+					$table .= '<td>' . $items['user']['friends_count'] . '</td>';
+					$table .= '<td>' . $items['user']['listed_count'] . '</td></tr>';
 				}
-				$table .= '</tr></table>';
+				$table .= '</table></div>';
 				echo $table;
-			}
 		}
 
-		public static function printTable($records, $headings, $printDirection){
+		public static function printTable($string,$printDirection){
 			
 			if($printDirection == 'vertical'){
-				\Classes\Html\htmlFunctions::printVerticaltable($records, $headings);
+				\Classes\Html\htmlFunctions::printVerticaltable($string);
 			}
 			else{
-				\Classes\Html\htmlFunctions::printHorizontaltable($records,$headings);
+				\Classes\Html\htmlFunctions::printHorizontaltable($string);
 			}	
 		}
-
-		public static function makeLink($urlVar, $increment,$title){
-			echo '<a href="?'.$urlVar.'=' .$increment. '">' . $title . '</a>';
-			echo'</p>';
-		}
-
-		public static function printTitle($collegeName){
-			if(empty($_GET)){
-				echo '<h1 id="title">List of Colleges</h1>';
-			}
-			else{
-				echo '<h1 id="title">'. $collegeName . ' Info'. '</h1>';
-			}
-		}
-
 	}
 ?>
