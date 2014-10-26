@@ -1,8 +1,5 @@
 <?php
 
-	//require_once('TwitterAPIExchange.php');
-	//require_once('settings.php');
-
 	require_once('Autoloader.php');
 	spl_autoload_register('Autoloader::loader');
 
