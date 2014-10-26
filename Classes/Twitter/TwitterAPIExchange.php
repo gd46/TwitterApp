@@ -11,6 +11,8 @@
  * @license  MIT License
  * @link     http://github.com/j7mbo/twitter-api-php
  */
+namespace Classes\Twitter;
+
 class TwitterAPIExchange
 {
     private $oauth_access_token;
