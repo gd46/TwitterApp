@@ -15,6 +15,9 @@
 	echo '<h2>Twitter APP</h2>';
 
 	//newOperation is the twitter call for pulling recents tweets from timeline.
+	
+	//$twitter->get('https://api.twitter.com/1.1/statuses/user_timeline.json', '?screen_name=gdibella21&count=20');
+
 	$newOperation = new Classes\Twitter\setAPI();
 	$newOperation->setRequest('https://api.twitter.com/1.1/statuses/user_timeline.json','GET','?screen_name=gdibella21&count=20');
 	//Returns a JSON response from Twitter

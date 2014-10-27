@@ -1,0 +1,41 @@
+How to use abraham/twitteroauth without using sessions, login, 
+and callback url:
+https://github.com/abraham/twitteroauth
+
+1. Grab the twitteroauth folder that contains
+	- OAuth.php
+	- twitteroauth.php
+
+2. Create a config.php file
+	- Define the api and oauth keys
+
+3. Find out how to pass the TwitterOAuth object the settings
+   from config.php by either a $settings array or how abraham 
+   does it with define statements.
+
+   - define('CONSUMER_KEY', 'KEY GOES HERE');
+   - define('CONSUMER_SECRET', 'KEY GOES HERE');
+   - define('OAUTH_TOKEN', 'KEY GOES HERE');
+   - define('OAUTH_TOKEN_SECRET', 'KEY GOES HERE');
+
+4. Create a TwitterOAuth object and pass it the api and login
+   credentials.
+
+5. The index file should look something like:
+
+	require_once('Autoloader.php');
+	register autoloader
+
+	$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET);
+
+	$content = $connection->get('name of api call');
+
+
+	//Create a html page that contains all of the html, and php print statement calls. Place this in the includes directory
+	inlcude('html.php');
+
+6. Directory
+	- twitteroauth
+	- interfaces
+	- classes
+	- css

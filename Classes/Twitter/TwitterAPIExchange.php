@@ -262,4 +262,9 @@ class TwitterAPIExchange
         return $return;
     }
 
+    public function get($url, $parameters){
+            $response = $this->buildOauth($url, 'GET', $parameters);
+            //return json_decode($response);
+            return $response;
+        }
 }
