@@ -17,7 +17,7 @@
 					$table .= '<tr><th>' . self::$user_timeline_headings[4] . '</th><td>' . $items->friends_count . '</td></tr>';
 					$table .= '<tr><th>' . self::$user_timeline_headings[5] . '</th><td>' . $items->listed_count . '</td></tr>';
 				}*/
-
+				
 					$table .= '<tr><th>' . self::$user_timeline_headings[0] . '</th><td>' . $content->created_at . '</td></tr>';
 					$table .= '<tr><th>' . self::$user_timeline_headings[1] . '</th><td>' . $content->text . '</td></tr>';
 					$table .= '<tr><th>' . self::$user_timeline_headings[2] . '</th><td>' . $content->screen_name . '</td></tr>';

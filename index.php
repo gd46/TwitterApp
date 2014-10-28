@@ -21,7 +21,7 @@
 
 	$connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
 
-	$content = $connection->get('users/show', array('screen_name' => 'gdibella21'));
+	$content = $connection->get('statuses/user_timeline', array('screen_name' => 'gdibella21'));
 
 	//newOperation is the twitter call for pulling recents tweets from timeline.
 	
@@ -37,9 +37,11 @@
 		<p>Twiter returned the following error message:</p><p><em>"
 		.$string[errors][0]["message"]."</em></p>"; exit();
 	}*/
+		
+	echo $content->user->screen_name;
 
-	echo $content->text;
 	var_dump($content);
+
 
 
 	//Classes\Html\htmlFunctions::printTable($content, 'horizontal');
