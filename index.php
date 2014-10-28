@@ -9,6 +9,17 @@
 	//spl_autoload_register('Autoloader::loader');
 
 	require_once('Classes/Twitter/twitteroauth/TwitterOAuth.php');
+	//require_once('Classes/Twitter/twitteroauth/OAuth.php');
+	require('Classes/Twitter/twitteroauth/OAuthConsumer.php');
+	require('Classes/Twitter/twitteroauth/OAuthDataStore.php');
+	require('Classes/Twitter/twitteroauth/OAuthRequest.php');
+	require('Classes/Twitter/twitteroauth/OAuthServer.php');
+	require('Classes/Twitter/twitteroauth/OAuthSignatureMethod.php');
+	require('Classes/Twitter/twitteroauth/OAuthSignatureMethod_HMAC_SHA1.php');
+	require('Classes/Twitter/twitteroauth/OAuthSignatureMethod_PLAINTEXT.php');
+	require('Classes/Twitter/twitteroauth/OAuthSignatureMethod_RSA_SHA1.php');
+	require('Classes/Twitter/twitteroauth/OAuthToken.php');
+	require('Classes/Twitter/twitteroauth/OAuthUtil.php');
 	require_once('Classes/Twitter/config/config.php');
 	require('Classes/Html/htmlFunctions.php');
 	
@@ -28,7 +39,8 @@
 	//Gets Direct Messages
 //4.//$content = $connection->get('direct_messages/sent', array('count' => 20));
 	//Prints home timeline
-//5.//$content = $connection->get('statuses/home_timeline', array('count' => 100));
+//5.
+	$content = $connection->get('statuses/home_timeline', array('count' => 100));
 
 	
 	/************************************************/
@@ -42,5 +54,5 @@
 	//Prints direct messages
 	//htmlFunctions::printDirectmessages($content);
 	//Prints home timeline
-	//htmlFunctions::printHometimeline($content);
+	htmlFunctions::printHometimeline($content);
 ?>
