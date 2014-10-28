@@ -31,7 +31,6 @@
 //5.//$content = $connection->get('statuses/home_timeline', array('count' => 100));
 
 	
-	//print_r($content);
 	/************************************************/
 	
 	//Prints the different responses
