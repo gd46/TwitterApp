@@ -38,16 +38,7 @@
 		.$string[errors][0]["message"]."</em></p>"; exit();
 	}*/
 	
-	foreach($content as $items){
-		echo $items->text;
-	}
-	
-
-	var_dump($content);
-
-
-
 	//Classes\Html\htmlFunctions::printTable($content, 'horizontal');
 
-	htmlFunctions::printVerticaltable($content);
+	htmlFunctions::printUsertimeline($content);
 ?>
