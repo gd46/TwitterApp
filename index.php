@@ -20,13 +20,12 @@
 	//Gets user timeline
 	//$content = $connection->get('statuses/user_timeline', array('screen_name' => 'gdibella21'));
 
+	//Gets followers list
 	$content = $connection->get('followers/list', array('screen_name' => 'gdibella21'));
 
-	foreach($content as $items){
-		echo $items->users->name;
-		echo $items->users->screen_name;
-	}
-	var_dump($content);
-
+	//Print user timeline
 	//htmlFunctions::printUsertimeline($content);
+
+	//Print followers list
+	htmlFunctions::printFollowerslist($content);
 ?>
