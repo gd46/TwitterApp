@@ -1,9 +1,9 @@
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="CSS/style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="CSS/style.css">
 	</head>
 </html>
 <?php
