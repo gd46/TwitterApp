@@ -1,5 +1,7 @@
 <?php
 
+namespace Classes\Twitter\twitteroauth;
+
 class OAuthSignatureMethod_HMAC_SHA1 extends OAuthSignatureMethod {
   function get_name() {
     return "HMAC-SHA1";
@@ -14,7 +16,7 @@ class OAuthSignatureMethod_HMAC_SHA1 extends OAuthSignatureMethod {
       ($token) ? $token->secret : ""
     );
 
-    $key_parts = OAuthUtil::urlencode_rfc3986($key_parts);
+    $key_parts = \Classes\Twitter\twitteroauth\OAuthUtil::urlencode_rfc3986($key_parts);
     $key = implode('&', $key_parts);
 
     return base64_encode(hash_hmac('sha1', $base_string, $key, true));

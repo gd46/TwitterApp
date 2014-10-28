@@ -1,5 +1,7 @@
 <?php
 
+namespace Classes\Twitter\twitteroauth;
+
 class OAuthUtil {
   public static function urlencode_rfc3986($input) {
   if (is_array($input)) {
@@ -104,8 +106,8 @@ class OAuthUtil {
     $parsed_parameters = array();
     foreach ($pairs as $pair) {
       $split = explode('=', $pair, 2);
-      $parameter = OAuthUtil::urldecode_rfc3986($split[0]);
-      $value = isset($split[1]) ? OAuthUtil::urldecode_rfc3986($split[1]) : '';
+      $parameter = \Classes\Twitter\twitteroauth\OAuthUtil::urldecode_rfc3986($split[0]);
+      $value = isset($split[1]) ? \Classes\Twitter\twitteroauth\OAuthUtil::urldecode_rfc3986($split[1]) : '';
 
       if (isset($parsed_parameters[$parameter])) {
         // We have already recieved parameter(s) with this name, so add to the list
@@ -129,8 +131,8 @@ class OAuthUtil {
     if (!$params) return '';
 
     // Urlencode both keys and values
-    $keys = OAuthUtil::urlencode_rfc3986(array_keys($params));
-    $values = OAuthUtil::urlencode_rfc3986(array_values($params));
+    $keys = \Classes\Twitter\twitteroauth\OAuthUtil::urlencode_rfc3986(array_keys($params));
+    $values = \Classes\Twitter\twitteroauth\OAuthUtil::urlencode_rfc3986(array_values($params));
     $params = array_combine($keys, $values);
 
     // Parameters are sorted by name, using lexicographical byte value ordering.

@@ -1,5 +1,7 @@
 <?php
 
+namespace Classes\Twitter\twitteroauth;
+
 class OAuthConsumer {
   public $key;
   public $secret;

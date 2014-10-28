@@ -1,5 +1,7 @@
 <?php
 
+namespace Classes\Twitter\twitteroauth;
+
 class OAuthRequest {
   private $parameters;
   private $http_method;
@@ -11,7 +13,7 @@ class OAuthRequest {
 
   function __construct($http_method, $http_url, $parameters=NULL) {
     @$parameters or $parameters = array();
-    $parameters = array_merge( OAuthUtil::parse_parameters(parse_url($http_url, PHP_URL_QUERY)), $parameters);
+    $parameters = array_merge( \Classes\Twitter\twitteroauth\OAuthUtil::parse_parameters(parse_url($http_url, PHP_URL_QUERY)), $parameters);
     $this->parameters = $parameters;
     $this->http_method = $http_method;
     $this->http_url = $http_url;
@@ -38,10 +40,10 @@ class OAuthRequest {
     // parsed parameter-list
     if (!$parameters) {
       // Find request headers
-      $request_headers = OAuthUtil::get_headers();
+      $request_headers = \Classes\Twitter\twitteroauth\OAuthUtil::get_headers();
 
       // Parse the query-string to find GET parameters
-      $parameters = OAuthUtil::parse_parameters($_SERVER['QUERY_STRING']);
+      $parameters = \Classes\Twitter\twitteroauth\OAuthUtil::parse_parameters($_SERVER['QUERY_STRING']);
 
       // It's a POST request of the proper content-type, so parse POST
       // parameters and add those overriding any duplicates from GET
@@ -49,7 +51,7 @@ class OAuthRequest {
           && @strstr($request_headers["Content-Type"],
                      "application/x-www-form-urlencoded")
           ) {
-        $post_data = OAuthUtil::parse_parameters(
+        $post_data = \Classes\Twitter\twitteroauth\OAuthUtil::parse_parameters(
           file_get_contents(self::$POST_INPUT)
         );
         $parameters = array_merge($parameters, $post_data);
@@ -58,7 +60,7 @@ class OAuthRequest {
       // We have a Authorization-header with OAuth data. Parse the header
       // and add those overriding any duplicates from GET or POST
       if (@substr($request_headers['Authorization'], 0, 6) == "OAuth ") {
-        $header_parameters = OAuthUtil::split_header(
+        $header_parameters = \Classes\Twitter\twitteroauth\OAuthUtil::split_header(
           $request_headers['Authorization']
         );
         $parameters = array_merge($parameters, $header_parameters);
@@ -66,7 +68,7 @@ class OAuthRequest {
 
     }
 
-    return new OAuthRequest($http_method, $http_url, $parameters);
+    return new \Classes\Twitter\twitteroauth\OAuthRequest($http_method, $http_url, $parameters);
   }
 
   /**
@@ -74,16 +76,16 @@ class OAuthRequest {
    */
   public static function from_consumer_and_token($consumer, $token, $http_method, $http_url, $parameters=NULL) {
     @$parameters or $parameters = array();
-    $defaults = array("oauth_version" => OAuthRequest::$version,
-                      "oauth_nonce" => OAuthRequest::generate_nonce(),
-                      "oauth_timestamp" => OAuthRequest::generate_timestamp(),
+    $defaults = array("oauth_version" => \Classes\Twitter\twitteroauth\OAuthRequest::$version,
+                      "oauth_nonce" => \Classes\Twitter\twitteroauth\OAuthRequest::generate_nonce(),
+                      "oauth_timestamp" => \Classes\Twitter\twitteroauth\OAuthRequest::generate_timestamp(),
                       "oauth_consumer_key" => $consumer->key);
     if ($token)
       $defaults['oauth_token'] = $token->key;
 
     $parameters = array_merge($defaults, $parameters);
 
-    return new OAuthRequest($http_method, $http_url, $parameters);
+    return new \Classes\Twitter\twitteroauth\OAuthRequest($http_method, $http_url, $parameters);
   }
 
   public function set_parameter($name, $value, $allow_duplicates = true) {
@@ -127,7 +129,7 @@ class OAuthRequest {
       unset($params['oauth_signature']);
     }
 
-    return OAuthUtil::build_http_query($params);
+    return \Classes\Twitter\twitteroauth\OAuthUtil::build_http_query($params);
   }
 
   /**
@@ -144,7 +146,7 @@ class OAuthRequest {
       $this->get_signable_parameters()
     );
 
-    $parts = OAuthUtil::urlencode_rfc3986($parts);
+    $parts = \Classes\Twitter\twitteroauth\OAuthUtil::urlencode_rfc3986($parts);
 
     return implode('&', $parts);
   }
@@ -193,7 +195,7 @@ class OAuthRequest {
    * builds the data one would send in a POST request
    */
   public function to_postdata() {
-    return OAuthUtil::build_http_query($this->parameters);
+    return \Classes\Twitter\twitteroauth\OAuthUtil::build_http_query($this->parameters);
   }
 
   /**
@@ -202,7 +204,7 @@ class OAuthRequest {
   public function to_header($realm=null) {
     $first = true;
 	if($realm) {
-      $out = 'Authorization: OAuth realm="' . OAuthUtil::urlencode_rfc3986($realm) . '"';
+      $out = 'Authorization: OAuth realm="' . \Classes\Twitter\twitteroauth\OAuthUtil::urlencode_rfc3986($realm) . '"';
       $first = false;
     } else
       $out = 'Authorization: OAuth';
@@ -214,9 +216,9 @@ class OAuthRequest {
         throw new OAuthException('Arrays not supported in headers');
       }
       $out .= ($first) ? ' ' : ',';
-      $out .= OAuthUtil::urlencode_rfc3986($k) .
+      $out .= \Classes\Twitter\twitteroauth\OAuthUtil::urlencode_rfc3986($k) .
               '="' .
-              OAuthUtil::urlencode_rfc3986($v) .
+              \Classes\Twitter\twitteroauth\OAuthUtil::urlencode_rfc3986($v) .
               '"';
       $first = false;
     }

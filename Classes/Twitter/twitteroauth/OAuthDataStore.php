@@ -1,5 +1,7 @@
 <?php
 
+namespace Classes\Twitter\twitteroauth;
+
 class OAuthDataStore {
   function lookup_consumer($consumer_key) {
     // implement me

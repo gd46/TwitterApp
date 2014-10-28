@@ -1,5 +1,7 @@
 <?php
 
+namespace Classes\Twitter\twitteroauth;
+
 abstract class OAuthSignatureMethod {
   /**
    * Needs to return the name of the Signature Method (ie HMAC-SHA1)

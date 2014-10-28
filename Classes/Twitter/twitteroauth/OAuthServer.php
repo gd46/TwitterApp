@@ -1,5 +1,13 @@
 <?php
 
+namespace Classes\Twitter\twitteroauth;
+
+if (!class_exists('OAuthException')) {
+  class OAuthException extends Exception {
+    // pass
+  }
+}
+
 class OAuthServer {
   protected $timestamp_threshold = 300; // in seconds, five minutes
   protected $version = '1.0';             // hi blaine

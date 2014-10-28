@@ -1,5 +1,7 @@
 <?php
 	
+namespace Classes\Twitter\twitteroauth;
+
 class OAuthToken {
   // access tokens and request tokens
   public $key;
@@ -20,9 +22,9 @@ class OAuthToken {
    */
   function to_string() {
     return "oauth_token=" .
-           OAuthUtil::urlencode_rfc3986($this->key) .
+           \Classes\Twitter\twitteroauth\OAuthUtil::urlencode_rfc3986($this->key) .
            "&oauth_token_secret=" .
-           OAuthUtil::urlencode_rfc3986($this->secret);
+           \Classes\Twitter\twitteroauth\OAuthUtil::urlencode_rfc3986($this->secret);
   }
 
   function __toString() {

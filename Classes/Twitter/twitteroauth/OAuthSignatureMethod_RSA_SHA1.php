@@ -1,5 +1,7 @@
 <?php
 
+namespace Classes\Twitter\twitteroauth;
+
 abstract class OAuthSignatureMethod_RSA_SHA1 extends OAuthSignatureMethod {
   public function get_name() {
     return "RSA-SHA1";
