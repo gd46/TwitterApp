@@ -37,8 +37,6 @@
 		<p>Twiter returned the following error message:</p><p><em>"
 		.$string[errors][0]["message"]."</em></p>"; exit();
 	}*/
-	
-	//Classes\Html\htmlFunctions::printTable($content, 'horizontal');
 
 	htmlFunctions::printUsertimeline($content);
 ?>
