@@ -17,15 +17,31 @@
 
 	$connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
 
-	//Gets user timeline
-	//$content = $connection->get('statuses/user_timeline', array('screen_name' => 'gdibella21'));
+	//Different Twitter API Calls
 
+	//Gets user timeline
+//1.//$content = $connection->get('statuses/user_timeline', array('screen_name' => 'gdibella21'));
 	//Gets followers list
-	$content = $connection->get('followers/list', array('screen_name' => 'gdibella21'));
+//2.//$content = $connection->get('followers/list', array('screen_name' => 'gdibella21'));
+	//Posts to twitter
+//3.//$content = $connection->post('statuses/update', array('status' => 'Post to twitter via api'));
+	//Gets Direct Messages
+//4.//$content = $connection->get('direct_messages/sent', array('count' => 20));
+	//Prints home timeline
+//5.//$content = $connection->get('statuses/home_timeline', array('count' => 100));
+
+	
+	//print_r($content);
+	/************************************************/
+	
+	//Prints the different responses
 
 	//Print user timeline
 	//htmlFunctions::printUsertimeline($content);
-
 	//Print followers list
-	htmlFunctions::printFollowerslist($content);
+	//htmlFunctions::printFollowerslist($content);
+	//Prints direct messages
+	//htmlFunctions::printDirectmessages($content);
+	//Prints home timeline
+	//htmlFunctions::printHometimeline($content);
 ?>
