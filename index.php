@@ -26,8 +26,6 @@
 	require_once('Classes/Twitter/config/config.php');
 	require('Classes/Html/htmlFunctions.php');
 	
-	echo '<h2>Twitter APP</h2>';
-
 	$connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
 
 	include('Includes/html.inc');
