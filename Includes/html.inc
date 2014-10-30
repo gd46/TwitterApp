@@ -45,9 +45,13 @@
 	</div>
 	<div id="collapseThree" class="panel-collapse collapse">
 		<div class="panel-body">
+			<form method="POST" action="index.php">
+					<label for id="status">Tweet</label><input type="text" name="status" id="status">
+					<input type="submit">
+			</form>
 			<?php 
-				$content = $connection->post('statuses/update', array('status' => 'test'));
-				htmlFunctions::printPost($content);
+				$content = $connection->post('statuses/update', array('status' => $_POST['status']));
+				htmlFunctions::printPost($content);	
 			?>
 		</div>
 	</div>

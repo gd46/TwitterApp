@@ -37,7 +37,7 @@ class OAuthUtil {
       $header_name = $matches[2][0];
       $header_content = (isset($matches[5])) ? $matches[5][0] : $matches[4][0];
       if (preg_match('/^oauth_/', $header_name) || !$only_allow_oauth_parameters) {
-        $params[$header_name] = OAuthUtil::urldecode_rfc3986($header_content);
+        $params[$header_name] = \Classes\Twitter\twitteroauth\OAuthUtil::urldecode_rfc3986($header_content);
       }
       $offset = $match[1] + strlen($match[0]);
     }
