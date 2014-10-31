@@ -1,9 +1,8 @@
 html{
-	background-color: #3b8cd1;
+	background-image: url('../Images/bg.png');
 }
 body{
-	background-color: #3b8cd1;
-}
+	background-image: url('../Images/bg.png');
 }
 #title{
 	text-align: center;
@@ -22,7 +21,7 @@ a{
 
 h2{
 	text-align: center;
-	color: #08e708;
+	color: white;
 }
 table tr th{
 	padding: 5px;
