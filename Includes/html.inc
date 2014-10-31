@@ -50,8 +50,12 @@
 					<input type="submit">
 			</form>
 			<?php 
+				if(!empty($_POST['status'])){
 				$content = $connection->post('statuses/update', array('status' => $_POST['status']));
-				htmlFunctions::printPost($content);	
+				}
+				if(empty($content->errors)){
+					htmlFunctions::printPost($content);
+				}	
 			?>
 		</div>
 	</div>
